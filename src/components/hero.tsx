@@ -197,7 +197,7 @@ export function Hero({ onOpenCVModal }: HeroProps) {
                   {/* Overlaid Micro Badges */}
                   <div className="absolute top-3 right-3 px-3 py-1.5 rounded-xl bg-white/90 dark:bg-slate-950/90 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 shadow-md flex items-center gap-1.5 text-[11px] font-semibold text-slate-800 dark:text-slate-200">
                     <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
-                    <span>B.Sc. Degree</span>
+                    <span>CGPA: 3.88</span>
                   </div>
 
                   <div className="absolute bottom-3 left-3 px-3 py-1.5 rounded-xl bg-white/90 dark:bg-slate-950/90 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 shadow-md flex items-center gap-1.5 text-[11px] font-semibold text-slate-800 dark:text-slate-200">
