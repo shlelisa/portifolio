@@ -14,7 +14,7 @@ export const profileData: Profile = {
   location: "Ethiopia",
   github: "https://github.com/shlelisa",
   linkedin: "https://www.linkedin.com/in/lelisa-shashura-4935a2259/",
-  avatarUrl: "/images/avatar.svg"
+  avatarUrl: "/images/profile.jpg"
 };
 
 export const skillCategories: SkillCategory[] = [
