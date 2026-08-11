@@ -240,7 +240,8 @@ export const servicesData: Service[] = [
       "TypeScript & JavaScript component design",
       "Frontend & backend integration"
     ],
-    subjectTag: "Full-Stack Web Development Inquiry"
+    subjectTag: "Full-Stack Web Development Inquiry",
+    iconName: "Code"
   },
   {
     id: "service-frontend",
@@ -251,7 +252,8 @@ export const servicesData: Service[] = [
       "Dark and light theme styling",
       "Interactive UI components"
     ],
-    subjectTag: "Frontend Development Inquiry"
+    subjectTag: "Frontend Development Inquiry",
+    iconName: "Layout"
   },
   {
     id: "service-backend",
@@ -262,7 +264,8 @@ export const servicesData: Service[] = [
       "Server-side business logic",
       "Data validation and endpoint handling"
     ],
-    subjectTag: "Backend / API Development Inquiry"
+    subjectTag: "Backend / API Development Inquiry",
+    iconName: "Server"
   },
   {
     id: "service-database",
@@ -272,7 +275,8 @@ export const servicesData: Service[] = [
       "Relational table design & query writing",
       "NoSQL document database setup"
     ],
-    subjectTag: "Database Development Inquiry"
+    subjectTag: "Database Development Inquiry",
+    iconName: "Database"
   },
   {
     id: "service-itsupport",
@@ -283,7 +287,8 @@ export const servicesData: Service[] = [
       "Network support and user assistance",
       "Enterprise system/ERP support"
     ],
-    subjectTag: "IT Support Inquiry"
+    subjectTag: "IT Support Inquiry",
+    iconName: "ShieldCheck"
   },
   {
     id: "service-design",
@@ -293,6 +298,7 @@ export const servicesData: Service[] = [
       "Software component design",
       "Database schema architecture"
     ],
-    subjectTag: "System Design Inquiry"
+    subjectTag: "System Design Inquiry",
+    iconName: "Cpu"
   }
 ];

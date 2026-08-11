@@ -54,6 +54,7 @@ export interface Service {
   description: string;
   deliverables: string[];
   subjectTag: string;
+  iconName: string;
 }
 
 export interface Profile {
