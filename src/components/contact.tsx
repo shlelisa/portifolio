@@ -81,7 +81,6 @@ export function Contact({ prefilledSubject }: ContactProps) {
 
     setIsSubmitting(true);
 
-    // Simulate asynchronous submission API call
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitSuccess(true);
@@ -90,20 +89,20 @@ export function Contact({ prefilledSubject }: ContactProps) {
   };
 
   return (
-    <section id="contact" className="py-20 lg:py-28 relative bg-slate-50/50 dark:bg-slate-900/30">
+    <section id="contact" className="py-20 lg:py-28 relative bg-[#f8fafc] dark:bg-[#0b1120]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center space-y-3 mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-cyan-400 text-xs font-semibold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 dark:bg-[#111827] border border-blue-200/80 dark:border-[#1e293b] text-blue-600 dark:text-blue-400 text-xs font-semibold uppercase tracking-wider">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Get In Touch</span>
           </div>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-slate-900 dark:text-white">
-            Let&apos;s Build Something <span className="gradient-text">Great Together</span>
+          <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-slate-900 dark:text-slate-50">
+            Let&apos;s Build Something <span className="text-blue-600 dark:text-blue-400">Great Together</span>
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl">
-            Whether you have a software engineering job opportunity, a project proposal, or technical inquiry, I&apos;d love to hear from you.
+            Whether you have a software engineering opportunity, a project proposal, or a technical inquiry, I&apos;d love to connect.
           </p>
         </div>
 
@@ -118,9 +117,9 @@ export function Contact({ prefilledSubject }: ContactProps) {
             transition={{ duration: 0.5 }}
             className="lg:col-span-5 space-y-6"
           >
-            <div className="p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
+            <div className="p-8 rounded-3xl bg-white dark:bg-[#111827] border border-slate-200 dark:border-[#1e293b] shadow-xl space-y-6">
               <div>
-                <h3 className="font-heading font-bold text-xl text-slate-900 dark:text-white">
+                <h3 className="font-heading font-bold text-xl text-slate-900 dark:text-slate-50">
                   Contact Information
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
@@ -131,9 +130,9 @@ export function Contact({ prefilledSubject }: ContactProps) {
               {/* Direct Info Items */}
               <div className="space-y-4">
                 {/* Email Item */}
-                <div className="flex items-center justify-between p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-800">
+                <div className="flex items-center justify-between p-4 rounded-2xl bg-slate-50 dark:bg-[#0b1120] border border-slate-200/80 dark:border-[#1e293b]">
                   <div className="flex items-center gap-3.5">
-                    <div className="p-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-cyan-400">
+                    <div className="p-2.5 rounded-xl bg-blue-50 dark:bg-[#111827] text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-[#1e293b]">
                       <Mail className="w-5 h-5" />
                     </div>
                     <div>
@@ -142,7 +141,7 @@ export function Contact({ prefilledSubject }: ContactProps) {
                       </span>
                       <a
                         href={`mailto:${profileData.email}`}
-                        className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors"
+                        className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                       >
                         {profileData.email}
                       </a>
@@ -151,7 +150,7 @@ export function Contact({ prefilledSubject }: ContactProps) {
 
                   <button
                     onClick={() => copyToClipboard(profileData.email)}
-                    className="p-2 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-slate-700 transition-colors"
+                    className="p-2 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-[#1e293b] transition-colors"
                     title="Copy Email"
                   >
                     {copiedEmail ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
@@ -159,8 +158,8 @@ export function Contact({ prefilledSubject }: ContactProps) {
                 </div>
 
                 {/* Phone Item */}
-                <div className="flex items-center gap-3.5 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-800">
-                  <div className="p-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-cyan-400">
+                <div className="flex items-center gap-3.5 p-4 rounded-2xl bg-slate-50 dark:bg-[#0b1120] border border-slate-200/80 dark:border-[#1e293b]">
+                  <div className="p-2.5 rounded-xl bg-blue-50 dark:bg-[#111827] text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-[#1e293b]">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
@@ -168,8 +167,8 @@ export function Contact({ prefilledSubject }: ContactProps) {
                       Phone Number
                     </span>
                     <a
-                      href={`tel:${profileData.phone}`}
-                      className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-cyan-400 transition-colors"
+                      href={`tel:${profileData.phone.replace(/\s+/g, '')}`}
+                      className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                     >
                       {profileData.phone}
                     </a>
@@ -177,13 +176,13 @@ export function Contact({ prefilledSubject }: ContactProps) {
                 </div>
 
                 {/* Location Item */}
-                <div className="flex items-center gap-3.5 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/60 dark:border-slate-800">
-                  <div className="p-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-cyan-400">
+                <div className="flex items-center gap-3.5 p-4 rounded-2xl bg-slate-50 dark:bg-[#0b1120] border border-slate-200/80 dark:border-[#1e293b]">
+                  <div className="p-2.5 rounded-xl bg-blue-50 dark:bg-[#111827] text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-[#1e293b]">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
                     <span className="text-[11px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider block">
-                      Current Location
+                      Location
                     </span>
                     <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">
                       {profileData.location}
@@ -193,16 +192,16 @@ export function Contact({ prefilledSubject }: ContactProps) {
               </div>
 
               {/* Social Channels */}
-              <div className="pt-2 border-t border-slate-100 dark:border-slate-800 space-y-3">
+              <div className="pt-2 border-t border-slate-100 dark:border-[#1e293b] space-y-3">
                 <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
-                  Professional Profiles:
+                  Professional Channels:
                 </span>
                 <div className="flex items-center gap-3">
                   <a
                     href={profileData.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-800 dark:text-slate-200 hover:bg-indigo-600 hover:text-white dark:hover:bg-cyan-400 dark:hover:text-slate-950 transition-colors"
+                    className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-slate-100 dark:bg-[#0b1120] border border-slate-200 dark:border-[#1e293b] text-xs font-semibold text-slate-800 dark:text-slate-200 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition-colors"
                   >
                     <Github className="w-4 h-4" />
                     <span>GitHub</span>
@@ -211,7 +210,7 @@ export function Contact({ prefilledSubject }: ContactProps) {
                     href={profileData.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-semibold text-slate-800 dark:text-slate-200 hover:bg-indigo-600 hover:text-white dark:hover:bg-cyan-400 dark:hover:text-slate-950 transition-colors"
+                    className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-slate-100 dark:bg-[#0b1120] border border-slate-200 dark:border-[#1e293b] text-xs font-semibold text-slate-800 dark:text-slate-200 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition-colors"
                   >
                     <Linkedin className="w-4 h-4" />
                     <span>LinkedIn</span>
@@ -230,22 +229,22 @@ export function Contact({ prefilledSubject }: ContactProps) {
             transition={{ duration: 0.5 }}
             className="lg:col-span-7"
           >
-            <div className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl space-y-6">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-[#111827] border border-slate-200 dark:border-[#1e293b] shadow-xl space-y-6">
               <div>
-                <h3 className="font-heading font-bold text-2xl text-slate-900 dark:text-white">
+                <h3 className="font-heading font-bold text-2xl text-slate-900 dark:text-slate-50">
                   Send Me A Message
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                  Fill out the form below and I will respond within 24 hours.
+                  Fill out the form below and I will respond as soon as possible.
                 </p>
               </div>
 
               {submitSuccess ? (
-                <div className="p-8 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-center space-y-4">
-                  <div className="w-12 h-12 rounded-full bg-emerald-500 text-white mx-auto flex items-center justify-center">
+                <div className="p-8 rounded-2xl bg-blue-500/10 border border-blue-500/30 text-center space-y-4">
+                  <div className="w-12 h-12 rounded-full bg-blue-600 text-white mx-auto flex items-center justify-center">
                     <CheckCircle2 className="w-6 h-6" />
                   </div>
-                  <h4 className="font-heading font-bold text-xl text-slate-900 dark:text-white">
+                  <h4 className="font-heading font-bold text-xl text-slate-900 dark:text-slate-50">
                     Message Sent Successfully!
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
@@ -253,7 +252,7 @@ export function Contact({ prefilledSubject }: ContactProps) {
                   </p>
                   <button
                     onClick={() => setSubmitSuccess(false)}
-                    className="px-6 py-2.5 rounded-xl font-semibold text-xs text-white bg-indigo-600 hover:bg-indigo-700 transition-colors"
+                    className="px-6 py-2.5 rounded-xl font-semibold text-xs text-white bg-blue-600 hover:bg-blue-700 transition-colors"
                   >
                     Send Another Message
                   </button>
@@ -271,9 +270,9 @@ export function Contact({ prefilledSubject }: ContactProps) {
                       placeholder="e.g. John Doe"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border ${
-                        errors.name ? "border-red-500" : "border-slate-200 dark:border-slate-700"
-                      } text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-cyan-400 transition-all`}
+                      className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-[#0b1120] border ${
+                        errors.name ? "border-red-500" : "border-slate-200 dark:border-[#1e293b]"
+                      } text-sm text-slate-900 dark:text-slate-50 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all`}
                     />
                     {errors.name && (
                       <span className="text-[11px] text-red-500 flex items-center gap-1">
@@ -292,9 +291,9 @@ export function Contact({ prefilledSubject }: ContactProps) {
                       placeholder="e.g. john@example.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border ${
-                        errors.email ? "border-red-500" : "border-slate-200 dark:border-slate-700"
-                      } text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-cyan-400 transition-all`}
+                      className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-[#0b1120] border ${
+                        errors.email ? "border-red-500" : "border-slate-200 dark:border-[#1e293b]"
+                      } text-sm text-slate-900 dark:text-slate-50 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all`}
                     />
                     {errors.email && (
                       <span className="text-[11px] text-red-500 flex items-center gap-1">
@@ -310,12 +309,12 @@ export function Contact({ prefilledSubject }: ContactProps) {
                     </label>
                     <input
                       type="text"
-                      placeholder="e.g. Software Engineering Opportunity / Project Discussion"
+                      placeholder="e.g. Software Engineering Role / Project Inquiry"
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                      className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border ${
-                        errors.subject ? "border-red-500" : "border-slate-200 dark:border-slate-700"
-                      } text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-cyan-400 transition-all`}
+                      className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-[#0b1120] border ${
+                        errors.subject ? "border-red-500" : "border-slate-200 dark:border-[#1e293b]"
+                      } text-sm text-slate-900 dark:text-slate-50 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all`}
                     />
                     {errors.subject && (
                       <span className="text-[11px] text-red-500 flex items-center gap-1">
@@ -331,12 +330,12 @@ export function Contact({ prefilledSubject }: ContactProps) {
                     </label>
                     <textarea
                       rows={5}
-                      placeholder="Describe your project, hiring requirements, or questions..."
+                      placeholder="Write your message here..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border ${
-                        errors.message ? "border-red-500" : "border-slate-200 dark:border-slate-700"
-                      } text-sm text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-cyan-400 transition-all resize-none`}
+                      className={`w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-[#0b1120] border ${
+                        errors.message ? "border-red-500" : "border-slate-200 dark:border-[#1e293b]"
+                      } text-sm text-slate-900 dark:text-slate-50 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all resize-none`}
                     />
                     {errors.message && (
                       <span className="text-[11px] text-red-500 flex items-center gap-1">
@@ -349,7 +348,7 @@ export function Contact({ prefilledSubject }: ContactProps) {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold text-sm gradient-bg-accent transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-70 disabled:pointer-events-none"
+                    className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold text-sm bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-600/20 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-70 disabled:pointer-events-none"
                   >
                     {isSubmitting ? (
                       <>

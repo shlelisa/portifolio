@@ -16,7 +16,7 @@ export const profileData: Profile = {
   github: "https://github.com/shlelisa",
   linkedin: "https://www.linkedin.com/in/lelisa-shashura-4935a2259/",
   avatarUrl: "/images/avatar.svg",
-  resumeDownloadName: "Lelisa_Shashura_CV.pdf",
+  resumeDownloadName: "Lelisa_Shashura_CV.txt",
   pillars: [
     {
       title: "Full-Stack Web Development",

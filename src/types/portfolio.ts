@@ -2,6 +2,8 @@ export interface Project {
   id: string;
   title: string;
   category: 'Web Apps' | 'Management Systems' | 'Enterprise IT';
+  problem: string;
+  solution: string;
   shortDescription: string;
   fullDescription: string;
   image: string;
@@ -14,8 +16,6 @@ export interface Project {
 
 export interface SkillItem {
   name: string;
-  level: number;
-  badge?: string;
 }
 
 export interface SkillCategory {
@@ -34,7 +34,6 @@ export interface Experience {
   type: string;
   responsibilities: string[];
   techUsed: string[];
-  achievements: string[];
 }
 
 export interface Education {
@@ -53,7 +52,6 @@ export interface Service {
   id: string;
   title: string;
   description: string;
-  iconName: string;
   deliverables: string[];
   subjectTag: string;
 }
@@ -61,24 +59,12 @@ export interface Service {
 export interface Profile {
   name: string;
   title: string;
-  subTitle: string;
   bio: string;
-  aboutStory: string[];
+  aboutParagraphs: string[];
   email: string;
   phone: string;
   location: string;
   github: string;
   linkedin: string;
   avatarUrl: string;
-  resumeDownloadName: string;
-  pillars: {
-    title: string;
-    description: string;
-    icon: string;
-  }[];
-  stats: {
-    label: string;
-    value: string;
-    subtext: string;
-  }[];
 }

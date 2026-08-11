@@ -10,28 +10,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        brand: {
-          50: "#eef2ff",
-          100: "#e0e7ff",
-          200: "#c7d2fe",
-          300: "#a5b4fc",
-          400: "#818cf8",
-          500: "#6366f1",
-          600: "#4f46e5",
-          700: "#4338ca",
-          800: "#3730a3",
-          900: "#312e81",
-          950: "#1e1b4b",
+        // Deep Navy + Electric Blue Palette
+        navy: {
+          950: "#0b1120", // Dark Mode Main Background
+          900: "#111827", // Dark Mode Card Background
+          800: "#1e293b", // Dark Mode Borders
+          700: "#334155",
         },
-        cyanAccent: {
-          400: "#22d3ee",
-          500: "#06b6d4",
-          600: "#0891b2",
+        electric: {
+          400: "#60a5fa", // Dark Mode Accent Hover
+          500: "#3b82f6", // Dark Mode Primary Accent
+          600: "#2563eb", // Light Mode Primary Accent
+          700: "#1d4ed8", // Light Mode Accent Hover
         },
-        darkBg: {
-          base: "#0b0f19",
-          card: "#111827",
-          border: "#1f293d",
+        slateText: {
+          primaryLight: "#0f172a",
+          secondaryLight: "#475569",
+          borderLight: "#e2e8f0",
+          primaryDark: "#f8fafc",
+          secondaryDark: "#94a3b8",
         }
       },
       fontFamily: {
@@ -39,18 +36,13 @@ const config: Config = {
         heading: ["var(--font-outfit)", "sans-serif"],
       },
       animation: {
-        "float": "float 6s ease-in-out infinite",
         "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        "glow": "glow 3s ease-in-out infinite alternate",
+        "float-subtle": "floatSubtle 6s ease-in-out infinite",
       },
       keyframes: {
-        float: {
+        floatSubtle: {
           "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-12px)" },
-        },
-        glow: {
-          "0%": { opacity: "0.4", filter: "blur(20px)" },
-          "100%": { opacity: "0.8", filter: "blur(30px)" },
+          "50%": { transform: "translateY(-6px)" },
         }
       },
     },
