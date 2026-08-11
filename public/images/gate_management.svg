@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bg)" />
+
+  <rect x="40" y="40" width="720" height="420" rx="16" fill="#111827" stroke="#312e81" stroke-width="2" />
+  <path d="M 40 56 C 40 47, 47 40, 56 40 L 744 40 C 753 40, 760 47, 760 56 L 760 85 L 40 85 Z" fill="#0f172a" />
+  <circle cx="70" cy="62" r="6" fill="#ef4444" />
+  <circle cx="90" cy="62" r="6" fill="#f59e0b" />
+  <circle cx="110" cy="62" r="6" fill="#10b981" />
+  <text x="400" y="67" font-family="sans-serif" font-size="14" font-weight="bold" fill="#94a3b8" text-anchor="middle">Computer Gate &amp; Asset Security Management System</text>
+
+  {/* Real-time Scan Terminal */}
+  <g transform="translate(60, 105)">
+    <rect x="0" y="0" width="320" height="320" rx="12" fill="#0b0f19" stroke="#312e81" stroke-width="1" />
+    <text x="20" y="30" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff">Gate Scanner Terminal #01</text>
+    
+    <rect x="20" y="50" width="280" height="120" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="2" />
+    <circle cx="55" cy="110" r="22" fill="#10b981" />
+    <text x="55" y="116" font-family="sans-serif" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">✓</text>
+    <text x="95" y="95" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff">CHECK-OUT APPROVED</text>
+    <text x="95" y="115" font-family="sans-serif" font-size="11" fill="#94a3b8">Asset Tag: #LAP-2024-8841</text>
+    <text x="95" y="132" font-family="sans-serif" font-size="11" fill="#94a3b8">Pass Authorization: Valid</text>
+
+    {/* Barcode graphic */}
+    <rect x="20" y="190" width="280" height="60" rx="6" fill="#ffffff" />
+    <g fill="#000000">
+      <rect x="35" y="200" width="4" height="40" />
+      <rect x="43" y="200" width="8" height="40" />
+      <rect x="55" y="200" width="2" height="40" />
+      <rect x="61" y="200" width="6" height="40" />
+      <rect x="73" y="200" width="4" height="40" />
+      <rect x="85" y="200" width="10" height="40" />
+      <rect x="100" y="200" width="3" height="40" />
+      <rect x="110" y="200" width="6" height="40" />
+      <rect x="125" y="200" width="4" height="40" />
+      <rect x="135" y="200" width="8" height="40" />
+      <rect x="150" y="200" width="4" height="40" />
+      <rect x="165" y="200" width="6" height="40" />
+      <rect x="180" y="200" width="12" height="40" />
+      <rect x="200" y="200" width="4" height="40" />
+      <rect x="215" y="200" width="6" height="40" />
+      <rect x="230" y="200" width="8" height="40" />
+      <rect x="250" y="200" width="4" height="40" />
+      <rect x="265" y="200" width="8" height="40" />
+    </g>
+
+    <text x="160" y="280" font-family="sans-serif" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">Scanning RFID / Serial...</text>
+  </g>
+
+  {/* Real-time Access Audit Trail Table */}
+  <g transform="translate(400, 105)">
+    <rect x="0" y="0" width="340" height="320" rx="12" fill="#0b0f19" stroke="#1f293d" stroke-width="1" />
+    <text x="20" y="30" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff">Live Asset Gate Logs</text>
+
+    {/* Log Entry 1 */}
+    <rect x="15" y="50" width="310" height="55" rx="8" fill="#1e293b" />
+    <text x="25" y="72" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff">DELL Latitude 5420</text>
+    <text x="25" y="90" font-family="sans-serif" font-size="10" fill="#94a3b8">User: Lelisa S. • 10:24:12 AM</text>
+    <rect x="230" y="65" width="85" height="24" rx="6" fill="#10b981" />
+    <text x="272" y="81" font-family="sans-serif" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">Check-Out</text>
+
+    {/* Log Entry 2 */}
+    <rect x="15" y="115" width="310" height="55" rx="8" fill="#1e293b" />
+    <text x="25" y="137" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff">MacBook Pro 16&quot;</text>
+    <text x="25" y="155" font-family="sans-serif" font-size="10" fill="#94a3b8">User: Tech Team • 10:18:05 AM</text>
+    <rect x="230" y="130" width="85" height="24" rx="6" fill="#6366f1" />
+    <text x="272" y="146" font-family="sans-serif" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">Check-In</text>
+
+    {/* Log Entry 3 */}
+    <rect x="15" y="180" width="310" height="55" rx="8" fill="#1e293b" />
+    <text x="25" y="202" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ffffff">Lenovo ThinkPad X1</text>
+    <text x="25" y="220" font-family="sans-serif" font-size="10" fill="#94a3b8">Visitor Pass #089 • 10:02:44 AM</text>
+    <rect x="230" y="195" width="85" height="24" rx="6" fill="#10b981" />
+    <text x="272" y="211" font-family="sans-serif" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">Check-Out</text>
+  </g>
+</svg>

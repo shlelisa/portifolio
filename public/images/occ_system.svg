@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="card-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1f293d" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="bar-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bg)" />
+
+  {/* Dashboard App Frame */}
+  <rect x="40" y="40" width="720" height="420" rx="16" fill="url(#card-grad)" stroke="#312e81" stroke-width="2" />
+  
+  {/* App Topbar */}
+  <path d="M 40 56 C 40 47, 47 40, 56 40 L 744 40 C 753 40, 760 47, 760 56 L 760 85 L 40 85 Z" fill="#0f172a" />
+  <circle cx="70" cy="62" r="6" fill="#ef4444" />
+  <circle cx="90" cy="62" r="6" fill="#f59e0b" />
+  <circle cx="110" cy="62" r="6" fill="#10b981" />
+  <text x="400" y="67" font-family="sans-serif" font-size="14" font-weight="bold" fill="#94a3b8" text-anchor="middle">OCC Management System • Department &amp; Meeting Portal</text>
+
+  {/* Left Sidebar */}
+  <rect x="60" y="105" width="160" height="335" rx="12" fill="#0b0f19" stroke="#1f293d" stroke-width="1" />
+  <rect x="80" y="130" width="120" height="24" rx="6" fill="#4f46e5" />
+  <text x="140" y="146" font-family="sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">Dashboard</text>
+  <rect x="80" y="170" width="120" height="24" rx="6" fill="#1e293b" />
+  <text x="140" y="186" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Meetings</text>
+  <rect x="80" y="210" width="120" height="24" rx="6" fill="#1e293b" />
+  <text x="140" y="226" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Departments</text>
+  <rect x="80" y="250" width="120" height="24" rx="6" fill="#1e293b" />
+  <text x="140" y="266" font-family="sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Analytics</text>
+
+  {/* Main Stats Cards */}
+  <g transform="translate(240, 105)">
+    <rect x="0" y="0" width="155" height="90" rx="12" fill="#0b0f19" stroke="#312e81" stroke-width="1" />
+    <text x="16" y="28" font-family="sans-serif" font-size="11" fill="#94a3b8">Active Meetings</text>
+    <text x="16" y="60" font-family="sans-serif" font-size="28" font-weight="bold" fill="#38bdf8">14</text>
+  </g>
+
+  <g transform="translate(410, 105)">
+    <rect x="0" y="0" width="155" height="90" rx="12" fill="#0b0f19" stroke="#312e81" stroke-width="1" />
+    <text x="16" y="28" font-family="sans-serif" font-size="11" fill="#94a3b8">Departments</text>
+    <text x="16" y="60" font-family="sans-serif" font-size="28" font-weight="bold" fill="#818cf8">8</text>
+  </g>
+
+  <g transform="translate(580, 105)">
+    <rect x="0" y="0" width="140" height="90" rx="12" fill="#0b0f19" stroke="#312e81" stroke-width="1" />
+    <text x="16" y="28" font-family="sans-serif" font-size="11" fill="#94a3b8">Completion</text>
+    <text x="16" y="60" font-family="sans-serif" font-size="28" font-weight="bold" fill="#34d399">96%</text>
+  </g>
+
+  {/* Chart Graph */}
+  <g transform="translate(240, 215)">
+    <rect x="0" y="0" width="480" height="225" rx="12" fill="#0b0f19" stroke="#1f293d" stroke-width="1" />
+    <text x="20" y="30" font-family="sans-serif" font-size="13" font-weight="bold" fill="#ffffff">Weekly Department Performance</text>
+
+    {/* Chart Bars */}
+    <rect x="40" y="120" width="30" height="70" rx="4" fill="url(#bar-grad)" />
+    <rect x="100" y="80" width="30" height="110" rx="4" fill="url(#bar-grad)" />
+    <rect x="160" y="60" width="30" height="130" rx="4" fill="url(#bar-grad)" />
+    <rect x="220" y="100" width="30" height="90" rx="4" fill="url(#bar-grad)" />
+    <rect x="280" y="50" width="30" height="140" rx="4" fill="url(#bar-grad)" />
+    <rect x="340" y="90" width="30" height="100" rx="4" fill="url(#bar-grad)" />
+    <rect x="400" y="40" width="30" height="150" rx="4" fill="url(#bar-grad)" />
+  </g>
+</svg>

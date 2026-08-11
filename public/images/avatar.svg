@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#0b0f19" />
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="50%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <linearGradient id="glow-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="20" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  {/* Background */}
+  <rect width="800" height="800" fill="url(#bg-grad)" />
+
+  {/* Subtle Grid */}
+  <g stroke="#ffffff" stroke-opacity="0.04" stroke-width="1">
+    <line x1="0" y1="200" x2="800" y2="200" />
+    <line x1="0" y1="400" x2="800" y2="400" />
+    <line x1="0" y1="600" x2="800" y2="600" />
+    <line x1="200" y1="0" x2="200" y2="800" />
+    <line x1="400" y1="0" x2="400" y2="800" />
+    <line x1="600" y1="0" x2="600" y2="800" />
+  </g>
+
+  {/* Glowing Backdrop Ring */}
+  <circle cx="400" cy="380" r="260" fill="url(#glow-grad)" filter="url(#glow)" />
+  <circle cx="400" cy="380" r="210" fill="none" stroke="url(#accent-grad)" stroke-width="4" stroke-dasharray="12 8" opacity="0.6" />
+
+  {/* Avatar Base Silhouette */}
+  {/* Outer Glow Halo */}
+  <circle cx="400" cy="330" r="130" fill="#4f46e5" opacity="0.3" filter="url(#glow)" />
+
+  {/* Head Circle */}
+  <circle cx="400" cy="310" r="110" fill="url(#accent-grad)" />
+  
+  {/* Shoulders / Torso */}
+  <path d="M 180 680 C 200 490, 600 490, 620 680 Z" fill="url(#accent-grad)" />
+
+  {/* Face & Suit Details */}
+  <path d="M 330 380 L 400 460 L 470 380 Z" fill="#ffffff" opacity="0.15" />
+
+  {/* Tech Icon Badges Floating */}
+  <g transform="translate(620, 220)">
+    <rect x="-40" y="-40" width="80" height="80" rx="24" fill="#1e1b4b" stroke="#06b6d4" stroke-width="2" />
+    <text x="0" y="8" font-family="sans-serif" font-size="28" font-weight="bold" fill="#06b6d4" text-anchor="middle">&lt;/&gt;</text>
+  </g>
+
+  <g transform="translate(180, 260)">
+    <rect x="-40" y="-40" width="80" height="80" rx="24" fill="#1e1b4b" stroke="#818cf8" stroke-width="2" />
+    <text x="0" y="10" font-family="sans-serif" font-size="28" font-weight="bold" fill="#818cf8" text-anchor="middle">JS</text>
+  </g>
+
+  <g transform="translate(220, 580)">
+    <rect x="-35" y="-35" width="70" height="70" rx="20" fill="#1e1b4b" stroke="#10b981" stroke-width="2" />
+    <text x="0" y="8" font-family="sans-serif" font-size="22" font-weight="bold" fill="#10b981" text-anchor="middle">SQL</text>
+  </g>
+
+  {/* Overlay Banner Text */}
+  <rect x="150" y="690" width="500" height="70" rx="20" fill="#0b0f19" stroke="#312e81" stroke-width="2" />
+  <text x="400" y="735" font-family="sans-serif" font-size="26" font-weight="bold" fill="#ffffff" text-anchor="middle">Lelisa Shashura</text>
+</svg>
