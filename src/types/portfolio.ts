@@ -1,7 +1,14 @@
+export interface DevelopmentPhase {
+  phase: string;
+  description: string;
+}
+
 export interface Project {
   id: string;
   title: string;
-  category: 'Web Apps' | 'Management Systems' | 'Enterprise IT';
+  category: 'Academic Projects' | 'Management Systems' | 'Web Apps' | 'Enterprise IT';
+  projectType: 'Academic Project' | 'Personal Project' | 'Professional Project';
+  period: string;
   problem: string;
   solution: string;
   shortDescription: string;
@@ -9,7 +16,10 @@ export interface Project {
   image: string;
   features: string[];
   techStack: string[];
-  githubUrl: string;
+  phases: DevelopmentPhase[];
+  contribution: string[];
+  outcome: string;
+  githubUrl?: string;
   liveUrl?: string;
   featured?: boolean;
 }

@@ -1,18 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Github,
+  GraduationCap,
   Sparkles,
   Search,
   X,
   CheckCircle2,
   ArrowRight,
-  Code,
+  Code2,
   AlertCircle,
-  Lightbulb
+  Lightbulb,
+  Layers,
+  UserCheck,
+  FileCode2
 } from "lucide-react";
 import { projectsData } from "@/data/portfolio-data";
 import { Project } from "@/types/portfolio";
@@ -21,12 +23,9 @@ export function Projects() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [activeProjectModal, setActiveProjectModal] = useState<Project | null>(null);
-  const [imgErrors, setImgErrors] = useState<Record<string, boolean>>({});
-
-  const categories = ["All", "Management Systems", "Web Apps", "Enterprise IT"];
 
   const filteredProjects = projectsData.filter((project) => {
-    const matchesCategory = selectedCategory === "All" || project.category === selectedCategory;
+    const matchesCategory = selectedCategory === "All" || project.category === selectedCategory || project.projectType === selectedCategory;
     const matchesSearch =
       project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       project.problem.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -35,35 +34,30 @@ export function Projects() {
     return matchesCategory && matchesSearch;
   });
 
-  const handleImgError = (id: string) => {
-    setImgErrors((prev) => ({ ...prev, [id]: true }));
-  };
-
   return (
     <section id="projects" className="py-20 lg:py-28 relative bg-tech-grid">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center space-y-3 mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 dark:bg-[#111827] border border-blue-200/80 dark:border-[#1e293b] text-blue-600 dark:text-blue-400 text-xs font-semibold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Software Applications</span>
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-50 dark:bg-[#111827] border border-blue-200/80 dark:border-[#1e293b] text-blue-600 dark:text-blue-400 text-xs font-semibold uppercase tracking-wider">
+            <GraduationCap className="w-4 h-4" />
+            <span>Academic Projects · Bule Hora University (2020–2024)</span>
           </div>
           <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-slate-900 dark:text-slate-50">
-            Projects &amp; <span className="text-blue-600 dark:text-blue-400">Software Solutions</span>
+            Academic <span className="text-blue-600 dark:text-blue-400">Software Projects</span>
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl">
-            Practical software projects built to address specific operational problems using modern web technologies.
+            Detailed technical summaries of software engineering applications built during my degree at Bule Hora University (CGPA: 3.88).
           </p>
 
-          {/* Search & Category Filter Bar */}
+          {/* Search Bar */}
           <div className="w-full max-w-3xl pt-6 space-y-4">
-            {/* Search Input */}
             <div className="relative">
               <Search className="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
-                placeholder="Search projects by title, problem solved, or tech stack (e.g. Next.js, React, Node.js, SQL)..."
+                placeholder="Search academic projects (e.g. House Rental, Library, PHP, MySQL)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full pl-11 pr-10 py-3 rounded-2xl bg-white dark:bg-[#111827] border border-slate-200 dark:border-[#1e293b] text-sm text-slate-900 dark:text-slate-50 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all shadow-sm"
@@ -77,27 +71,10 @@ export function Projects() {
                 </button>
               )}
             </div>
-
-            {/* Category Filter Pills */}
-            <div className="flex flex-wrap justify-center gap-2">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all ${
-                    selectedCategory === cat
-                      ? "bg-blue-600 text-white dark:bg-blue-500 shadow-sm"
-                      : "bg-slate-100 dark:bg-[#111827] text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-[#1e293b] hover:bg-slate-200 dark:hover:bg-[#1e293b]"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
           </div>
         </div>
 
-        {/* Projects Cards Grid */}
+        {/* Text-Based Project Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project) => (
@@ -108,88 +85,73 @@ export function Projects() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
-                className="group rounded-3xl bg-white dark:bg-[#111827] border border-slate-200 dark:border-[#1e293b] shadow-md overflow-hidden flex flex-col hover:border-blue-500/50 transition-all"
+                className="group rounded-3xl bg-white dark:bg-[#111827] border border-slate-200 dark:border-[#1e293b] shadow-md p-6 sm:p-7 flex flex-col justify-between space-y-6 hover:border-blue-500/50 transition-all"
               >
-                {/* Project Image Frame */}
-                <div className="relative aspect-[16/10] w-full bg-slate-950 overflow-hidden">
-                  {!imgErrors[project.id] ? (
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                      onError={() => handleImgError(project.id)}
-                    />
-                  ) : (
-                    <div className="w-full h-full flex flex-col items-center justify-center p-6 bg-slate-950 text-white text-center space-y-2">
-                      <div className="p-3 rounded-2xl bg-blue-600/20 border border-blue-500/30">
-                        <Code className="w-8 h-8 text-blue-400" />
-                      </div>
-                      <h4 className="font-heading font-bold text-sm text-blue-300">{project.title}</h4>
-                      <span className="text-[10px] text-slate-400 uppercase tracking-widest">{project.category}</span>
-                    </div>
-                  )}
-
-                  {/* Category Tag Overlay */}
-                  <div className="absolute top-3 left-3 px-3 py-1 rounded-xl bg-[#0b1120]/90 backdrop-blur-md border border-[#1e293b] text-[11px] font-semibold text-blue-400 shadow-sm">
-                    {project.category}
+                <div className="space-y-4">
+                  
+                  {/* Academic Label Header */}
+                  <div className="flex items-center justify-between gap-2 pb-3 border-b border-slate-100 dark:border-[#1e293b]">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-blue-50 dark:bg-[#0b1120] border border-blue-100 dark:border-[#1e293b] text-blue-600 dark:text-blue-400 text-[11px] font-semibold">
+                      <GraduationCap className="w-3.5 h-3.5" />
+                      Academic Project
+                    </span>
+                    <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
+                      2020–2024
+                    </span>
                   </div>
-                </div>
 
-                {/* Card Content Body */}
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                  <div className="space-y-3">
+                  {/* Project Title & Short Description */}
+                  <div className="space-y-2">
                     <h3 className="font-heading font-bold text-xl text-slate-900 dark:text-slate-50 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       {project.title}
                     </h3>
-                    
-                    {/* Developer Problem & Solution Brief */}
-                    <div className="space-y-1.5 text-xs">
-                      <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-[#0b1120] border border-slate-200/80 dark:border-[#1e293b]">
-                        <span className="font-bold text-slate-500 dark:text-slate-400 block mb-0.5 uppercase text-[10px] tracking-wider">
-                          Problem Solved:
-                        </span>
-                        <p className="text-slate-600 dark:text-slate-300 line-clamp-2">
-                          {project.problem}
-                        </p>
-                      </div>
+                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                      {project.shortDescription}
+                    </p>
+                  </div>
+
+                  {/* Problem & Solution Text Brief */}
+                  <div className="space-y-2 text-xs">
+                    <div className="p-3 rounded-2xl bg-slate-50 dark:bg-[#0b1120] border border-slate-200/80 dark:border-[#1e293b] space-y-1">
+                      <span className="font-bold text-slate-500 dark:text-slate-400 block text-[10px] uppercase tracking-wider">
+                        Objective &amp; Problem:
+                      </span>
+                      <p className="text-slate-700 dark:text-slate-300 line-clamp-2">
+                        {project.problem}
+                      </p>
                     </div>
                   </div>
 
-                  {/* Key Tech Badges */}
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {project.techStack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-slate-100 dark:bg-[#0b1120] text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-[#1e293b]"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Action Buttons */}
-                  <div className="flex items-center gap-2 pt-3 border-t border-slate-100 dark:border-[#1e293b]">
-                    <button
-                      onClick={() => setActiveProjectModal(project)}
-                      className="flex-1 inline-flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-xs font-semibold bg-blue-50 dark:bg-[#0b1120] text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-[#1e293b] hover:bg-blue-100 dark:hover:bg-[#1e293b] transition-colors"
-                    >
-                      <span>Problem &amp; Solution</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2.5 rounded-xl bg-slate-100 dark:bg-[#0b1120] border border-slate-200 dark:border-[#1e293b] text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                      title="View GitHub Repository / Profile"
-                    >
-                      <Github className="w-4 h-4" />
-                    </a>
+                  {/* Technologies Used */}
+                  <div className="space-y-1.5">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block">
+                      Technologies Used:
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.techStack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-slate-100 dark:bg-[#0b1120] text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-[#1e293b]"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
                 </div>
+
+                {/* Detail View Action Button */}
+                <div className="pt-4 border-t border-slate-100 dark:border-[#1e293b]">
+                  <button
+                    onClick={() => setActiveProjectModal(project)}
+                    className="w-full inline-flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 transition-colors shadow-sm"
+                  >
+                    <span>View Development Journey &amp; Details</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+
               </motion.div>
             ))}
           </AnimatePresence>
@@ -197,14 +159,14 @@ export function Projects() {
 
       </div>
 
-      {/* Project Detail Modal Overlay */}
+      {/* Text-Based Project Detail Modal Overlay */}
       <AnimatePresence>
         {activeProjectModal && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0b1120]/80 backdrop-blur-md overflow-y-auto"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0b1120]/85 backdrop-blur-md overflow-y-auto"
             onClick={() => setActiveProjectModal(null)}
           >
             <motion.div
@@ -222,24 +184,40 @@ export function Projects() {
                 <X className="w-5 h-5" />
               </button>
 
-              {/* Header */}
+              {/* Modal Header */}
               <div className="space-y-2 pr-8">
-                <span className="px-3 py-1 rounded-xl bg-blue-50 dark:bg-[#0b1120] text-xs font-bold text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-[#1e293b] uppercase tracking-wider">
-                  {activeProjectModal.category}
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="px-3 py-1 rounded-xl bg-blue-50 dark:bg-[#0b1120] text-xs font-bold text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-[#1e293b] flex items-center gap-1.5">
+                    <GraduationCap className="w-3.5 h-3.5" />
+                    <span>Academic Project</span>
+                  </span>
+                  <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                    Bule Hora University (2020–2024)
+                  </span>
+                </div>
                 <h3 className="font-heading font-extrabold text-2xl sm:text-3xl text-slate-900 dark:text-slate-50">
                   {activeProjectModal.title}
                 </h3>
               </div>
 
-              {/* Structured Developer View: Problem -> Solution */}
+              {/* Project Description */}
+              <div className="p-4 rounded-2xl bg-slate-50 dark:bg-[#0b1120] border border-slate-200/80 dark:border-[#1e293b]">
+                <h4 className="text-xs font-bold uppercase text-slate-400 dark:text-slate-500 tracking-wider mb-1">
+                  Project Description
+                </h4>
+                <p className="text-slate-700 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
+                  {activeProjectModal.fullDescription}
+                </p>
+              </div>
+
+              {/* Problem & Solution Breakdown */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="p-4 rounded-2xl bg-amber-500/5 border border-amber-500/20 space-y-1.5">
                   <div className="flex items-center gap-1.5 font-bold text-xs text-amber-600 dark:text-amber-400 uppercase tracking-wider">
                     <AlertCircle className="w-4 h-4" />
-                    <span>The Problem</span>
+                    <span>Problem Addressed</span>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                  <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
                     {activeProjectModal.problem}
                   </p>
                 </div>
@@ -247,22 +225,62 @@ export function Projects() {
                 <div className="p-4 rounded-2xl bg-blue-500/5 border border-blue-500/20 space-y-1.5">
                   <div className="flex items-center gap-1.5 font-bold text-xs text-blue-600 dark:text-blue-400 uppercase tracking-wider">
                     <Lightbulb className="w-4 h-4" />
-                    <span>The Solution</span>
+                    <span>System Solution</span>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                  <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
                     {activeProjectModal.solution}
                   </p>
                 </div>
               </div>
 
-              {/* Key Features */}
-              <div className="space-y-3">
-                <h4 className="font-heading font-bold text-xs uppercase text-slate-400 dark:text-slate-500 tracking-wider">
-                  Key System Features Built
+              {/* Development Journey (5 Phases) */}
+              <div className="space-y-3 pt-2 border-t border-slate-100 dark:border-[#1e293b]">
+                <h4 className="flex items-center gap-2 font-heading font-bold text-xs uppercase text-slate-400 dark:text-slate-500 tracking-wider">
+                  <Layers className="w-4 h-4 text-blue-500" />
+                  <span>Development Journey &amp; Phases</span>
                 </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+
+                <div className="space-y-2.5">
+                  {activeProjectModal.phases.map((phaseItem, i) => (
+                    <div
+                      key={i}
+                      className="p-3.5 rounded-xl bg-slate-50 dark:bg-[#0b1120] border border-slate-200/80 dark:border-[#1e293b] space-y-1"
+                    >
+                      <span className="font-bold text-xs text-blue-600 dark:text-blue-400 block">
+                        {phaseItem.phase}
+                      </span>
+                      <p className="text-xs text-slate-600 dark:text-slate-300">
+                        {phaseItem.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* My Contribution */}
+              <div className="space-y-3 pt-2 border-t border-slate-100 dark:border-[#1e293b]">
+                <h4 className="flex items-center gap-2 font-heading font-bold text-xs uppercase text-slate-400 dark:text-slate-500 tracking-wider">
+                  <UserCheck className="w-4 h-4 text-blue-500" />
+                  <span>My Contribution &amp; Implementation Tasks</span>
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {activeProjectModal.contribution.map((item, i) => (
+                    <div key={i} className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-300">
+                      <CheckCircle2 className="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Key Features */}
+              <div className="space-y-2 pt-2 border-t border-slate-100 dark:border-[#1e293b]">
+                <h4 className="font-heading font-bold text-xs uppercase text-slate-400 dark:text-slate-500 tracking-wider">
+                  Key System Features Implemented
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {activeProjectModal.features.map((feat, i) => (
-                    <div key={i} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-200">
+                    <div key={i} className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-300">
                       <CheckCircle2 className="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </div>
@@ -270,7 +288,7 @@ export function Projects() {
                 </div>
               </div>
 
-              {/* Tech Stack */}
+              {/* Technologies Used */}
               <div className="space-y-2 pt-2 border-t border-slate-100 dark:border-[#1e293b]">
                 <h4 className="font-heading font-bold text-xs uppercase text-slate-400 dark:text-slate-500 tracking-wider">
                   Technologies Used
@@ -287,17 +305,28 @@ export function Projects() {
                 </div>
               </div>
 
-              {/* GitHub Link */}
-              <div className="flex items-center gap-3 pt-4 border-t border-slate-100 dark:border-[#1e293b]">
-                <a
-                  href={activeProjectModal.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-semibold text-xs text-white bg-blue-600 hover:bg-blue-700 transition-all shadow-sm"
+              {/* Academic Outcome */}
+              <div className="p-4 rounded-2xl bg-slate-100 dark:bg-[#0b1120] border border-slate-200 dark:border-[#1e293b] text-xs space-y-1">
+                <span className="font-bold text-slate-900 dark:text-slate-50 uppercase tracking-wider text-[10px] block">
+                  Academic Outcome
+                </span>
+                <p className="text-slate-600 dark:text-slate-300">
+                  {activeProjectModal.outcome}
+                </p>
+              </div>
+
+              {/* Footer Note */}
+              <div className="flex items-center justify-between pt-4 border-t border-slate-100 dark:border-[#1e293b] text-xs text-slate-500">
+                <div className="inline-flex items-center gap-1.5 font-semibold text-slate-600 dark:text-slate-400">
+                  <FileCode2 className="w-4 h-4 text-blue-500" />
+                  <span>Academic Project · Bule Hora University (2020–2024)</span>
+                </div>
+                <button
+                  onClick={() => setActiveProjectModal(null)}
+                  className="px-4 py-2 rounded-xl bg-slate-100 dark:bg-[#0b1120] hover:bg-slate-200 dark:hover:bg-[#1e293b] text-slate-800 dark:text-slate-200 font-semibold text-xs transition-colors"
                 >
-                  <Github className="w-4 h-4" />
-                  <span>View GitHub Profile</span>
-                </a>
+                  Close Details
+                </button>
               </div>
             </motion.div>
           </motion.div>

@@ -114,95 +114,243 @@ export const experiences: Experience[] = [
 
 export const projectsData: Project[] = [
   {
-    id: "occ-system",
-    title: "OCC Management System",
-    category: "Management Systems",
-    problem: "Managing weekly departmental reports and meeting agendas manually with spreadsheets made tracking progress difficult.",
-    solution: "Built a web-based management system for organizing department reports, scheduling weekly meetings, and monitoring performance information.",
-    shortDescription: "A web-based management system for organizing department reports, weekly meetings, and performance information.",
-    fullDescription: "Built a web-based management system for organizing department reports, scheduling weekly meetings, and monitoring performance information. The platform replaces manual spreadsheet tracking with centralized digital dashboards.",
-    image: "/images/occ_system.svg",
-    features: [
-      "Departmental report submission portal",
-      "Weekly meeting agenda scheduler",
-      "Action item assignment & progress tracking",
-      "Departmental performance overview"
-    ],
-    techStack: ["React.js", "Node.js", "Express.js", "PostgreSQL", "Tailwind CSS"],
-    githubUrl: "https://github.com/shlelisa",
-    featured: true
-  },
-  {
-    id: "digital-library",
-    title: "Digital Library Management System",
-    category: "Web Apps",
-    problem: "Tracking paper book loans manually led to overdue book disorganization and slow search retrieval for readers.",
-    solution: "Developed a web portal to manage book catalogs, handle user authentication, and track borrowing and returns.",
-    shortDescription: "A web portal for book catalog management, user authentication, and borrowing workflows.",
-    fullDescription: "Developed a web portal to manage book catalogs, handle user authentication, and track borrowing and returns. Designed to help library staff index books and assist readers with instant book searches.",
-    image: "/images/library_system.svg",
-    features: [
-      "Book catalog search & filtering",
-      "Member registration & authentication",
-      "Borrowing and return status tracking",
-      "Basic borrowing report generation"
-    ],
-    techStack: ["Next.js", "TypeScript", "PHP", "MySQL", "Tailwind CSS"],
-    githubUrl: "https://github.com/shlelisa",
-    featured: true
-  },
-  {
     id: "house-rental",
-    title: "House Rental System",
-    category: "Management Systems",
-    problem: "Property managers and tenants lacked a centralized online listing system to request viewings and track rental agreements.",
-    solution: "Created a web application for displaying property listings, handling viewing requests, and managing tenant information.",
-    shortDescription: "A property rental web application managing property listings, viewing requests, and tenant information.",
-    fullDescription: "Created a web application for displaying property listings, handling viewing requests, and managing tenant information. Helps landlords manage rental records and gives tenants a clean search interface.",
+    title: "House Rental Management System",
+    category: "Academic Projects",
+    projectType: "Academic Project",
+    period: "Bule Hora University · 2020–2024",
+    problem: "Property managers and tenants lacked a centralized online listing system to view available rental properties, submit viewing requests, and manage rental agreements.",
+    solution: "A web-based system developed to help manage houses, tenants, property listings, viewing requests, and rental records.",
+    shortDescription: "A web-based academic system developed to manage house rental information, tenants, property listings, and rental records.",
+    fullDescription: "A web-based academic project developed to help manage house rental information, tenants, property listings, and rental records. Designed during my Software Engineering degree at Bule Hora University to demonstrate web development and database management principles.",
     image: "/images/house_rental.svg",
+    techStack: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
     features: [
-      "Property listing display & search filter",
-      "Tenant viewing request submission",
-      "Rental record tracking"
+      "Property listing display & filtering",
+      "Tenant rental request submission form",
+      "Property manager admin dashboard",
+      "Rental record & lease agreement tracking"
     ],
-    techStack: ["React.js", "Node.js", "MongoDB", "Express.js", "Tailwind CSS"],
-    githubUrl: "https://github.com/shlelisa",
+    phases: [
+      {
+        phase: "01 — Requirements",
+        description: "Identified functional requirements for managing rental listings, tenant applications, and landlord property records."
+      },
+      {
+        phase: "02 — Analysis & Design",
+        description: "Designed database tables, entity relationships, navigation workflows, and user interface wireframes."
+      },
+      {
+        phase: "03 — Development",
+        description: "Implemented frontend pages using HTML, CSS, and JavaScript, and coded server-side logic in PHP connected to a MySQL database."
+      },
+      {
+        phase: "04 — Testing",
+        description: "Tested user login, listing additions, tenant registration forms, and SQL queries to fix implementation errors."
+      },
+      {
+        phase: "05 — Final Result",
+        description: "Completed a functional academic web application for managing house rental records."
+      }
+    ],
+    contribution: [
+      "MySQL database schema design for properties and tenants",
+      "PHP backend script development for CRUD operations and session login",
+      "Frontend user interfaces using HTML, CSS, and JavaScript",
+      "Form input validation and data sanitization"
+    ],
+    outcome: "Successfully demonstrated practical web development, database modeling, and CRUD workflows as an academic software engineering project at Bule Hora University.",
     featured: true
   },
+  // {
+  //   id: "digital-library",
+  //   title: "Digital Library Management System",
+  //   category: "Academic Projects",
+  //   projectType: "Academic Project",
+  //   period: "Bule Hora University · 2020–2024",
+  //   problem: "Tracking physical book loans manually led to overdue book disorganization and slow search retrieval for library readers.",
+  //   solution: "A web portal developed to manage book catalogs, handle student member registrations, and track borrowing and returns.",
+  //   shortDescription: "A web portal developed to manage book catalogs, handle member registrations, and track borrowing and returns.",
+  //   fullDescription: "A web portal developed during university studies to manage book catalogs, handle member registrations, and track borrowing and returns. Built to assist library staff with indexing books and enabling instant book searches.",
+  //   image: "/images/library_system.svg",
+  //   techStack: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+  //   features: [
+  //     "Book catalog search & category filtering",
+  //     "Member registration & authentication",
+  //     "Borrowing and return status logging",
+  //     "Basic borrowing report overview"
+  //   ],
+  //   phases: [
+  //     {
+  //       phase: "01 — Requirements",
+  //       description: "Gathered functional requirements for book indexing, student borrowing limits, and return date tracking."
+  //     },
+  //     {
+  //       phase: "02 — Analysis & Design",
+  //       description: "Created database ER diagrams, search workflows, and library admin dashboard mockups."
+  //     },
+  //     {
+  //       phase: "03 — Development",
+  //       description: "Built frontend web forms using HTML, CSS, and JavaScript, and implemented backend logic using PHP and MySQL."
+  //     },
+  //     {
+  //       phase: "04 — Testing",
+  //       description: "Verified catalog search response, borrowing duration logic, and multi-user login permissions."
+  //     },
+  //     {
+  //       phase: "05 — Final Result",
+  //       description: "Delivered a functional academic library management system prototype."
+  //     }
+  //   ],
+  //   contribution: [
+  //     "Designed relational database tables for books, categories, and borrowing transactions",
+  //     "Built search and catalog filtering using PHP and SQL queries",
+  //     "Created frontend interfaces for library staff and student members"
+  //   ],
+  //   outcome: "Demonstrated relational database design and backend PHP application development for educational catalog management.",
+  //   featured: true
+  // },
+  // {
+  //   id: "occ-system",
+  //   title: "OCC Departmental Management System",
+  //   category: "Academic Projects",
+  //   projectType: "Academic Project",
+  //   period: "Bule Hora University · 2020–2024",
+  //   problem: "Organizing weekly departmental reports and meeting schedules manually with spreadsheets made tracking action items difficult.",
+  //   solution: "A web-based system developed for submitting department reports, scheduling weekly meetings, and monitoring progress.",
+  //   shortDescription: "A web-based system developed for submitting department reports, scheduling weekly meetings, and monitoring progress.",
+  //   fullDescription: "A web-based academic project developed to organize department reports, schedule weekly meetings, and track performance information.",
+  //   image: "/images/occ_system.svg",
+  //   techStack: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+  //   features: [
+  //     "Departmental report submission form",
+  //     "Weekly meeting agenda scheduler",
+  //     "Action item progress status tracking",
+  //     "Departmental overview display"
+  //   ],
+  //   phases: [
+  //     {
+  //       phase: "01 — Requirements",
+  //       description: "Identified reporting needs and departmental progress tracking parameters."
+  //     },
+  //     {
+  //       phase: "02 — Analysis & Design",
+  //       description: "Structured report formats, meeting agenda workflows, and database tables."
+  //     },
+  //     {
+  //       phase: "03 — Development",
+  //       description: "Coded backend submission logic in PHP and built interactive frontend forms with HTML, CSS, and JavaScript."
+  //     },
+  //     {
+  //       phase: "04 — Testing",
+  //       description: "Tested form submissions, data storage accuracy, and report viewing filters."
+  //     },
+  //     {
+  //       phase: "05 — Final Result",
+  //       description: "Completed a functional departmental management academic tool."
+  //     }
+  //   ],
+  //   contribution: [
+  //     "PHP backend scripts for report submissions and meeting records",
+  //     "MySQL database schema for departmental metrics",
+  //     "Frontend layout design using HTML and CSS"
+  //   ],
+  //   outcome: "Provided a structured web implementation for administrative report tracking.",
+  //   featured: true
+  // },
   {
     id: "employee-hiring",
     title: "Employee Hiring System",
-    category: "Enterprise IT",
-    problem: "Recruitment teams needed a structured way to handle candidate job applications and monitor applicant evaluation stages.",
-    solution: "Built an applicant tracking web application to manage job postings, organize candidate applications, and record interview evaluations.",
+    category: "Academic Projects",
+    projectType: "Academic Project",
+    period: "Bule Hora University · 2020–2024",
+    problem: "Managing candidate applications and interview evaluation notes manually caused delays in recruitment review workflows.",
+    solution: "A recruitment management web application developed to record job postings, organize candidate applications, and log evaluation notes.",
     shortDescription: "A recruitment management application for organizing job postings and candidate application pipelines.",
-    fullDescription: "Built an applicant tracking web application to manage job postings, organize candidate applications, and record interview evaluations. Designed to streamline candidate review for hiring teams.",
+    fullDescription: "A recruitment management web application built during university studies to record job postings, organize candidate applications, and log interview evaluations.",
     image: "/images/employee_hiring.svg",
+    techStack: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
     features: [
-      "Job posting manager",
-      "Candidate application tracking stages",
-      "Interviewer evaluation notes"
+      "Job vacancy posting manager",
+      "Candidate application submission",
+      "Interviewer evaluation recording",
+      "Application stage status overview"
     ],
-    techStack: ["Next.js", "TypeScript", "PostgreSQL", "Tailwind CSS"],
-    githubUrl: "https://github.com/shlelisa",
+    phases: [
+      {
+        phase: "01 — Requirements",
+        description: "Defined recruitment stages, applicant fields, and interviewer evaluation criteria."
+      },
+      {
+        phase: "02 — Analysis & Design",
+        description: "Designed application status workflows and database schema relationships."
+      },
+      {
+        phase: "03 — Development",
+        description: "Built candidate submission forms and admin application pipelines in PHP and MySQL."
+      },
+      {
+        phase: "04 — Testing",
+        description: "Executed validation checks on form inputs and status updates."
+      },
+      {
+        phase: "05 — Final Result",
+        description: "Produced a functional recruitment management academic prototype."
+      }
+    ],
+    contribution: [
+      "Designed MySQL database tables for job vacancies and applicant records",
+      "Implemented PHP backend endpoints for application processing",
+      "Built frontend applicant review tables using HTML, CSS, and JavaScript"
+    ],
+    outcome: "Demonstrated application tracking pipeline logic and database relational mapping.",
     featured: true
   },
   {
     id: "computer-gate-management",
     title: "Computer Gate Management System",
-    category: "Enterprise IT",
-    problem: "Recording computer hardware check-in/check-out events at physical security gates manually on paper logbooks created long queues.",
-    solution: "Developed an IT asset tracking system to log computer serial numbers, record check-in/check-out events, and generate gate passes.",
+    category: "Academic Projects",
+    projectType: "Academic Project",
+    period: "Bule Hora University · 2020–2024",
+    problem: "Recording computer hardware serial numbers and check-in/out events manually on paper logbooks caused gate delays and entry errors.",
+    solution: "An IT asset tracking system developed to record computer serial numbers, check-in/out events, and generate gate passes.",
     shortDescription: "An IT asset tracking system managing computer serial numbers, check-in/out logs, and gate passes.",
-    fullDescription: "Developed an IT asset tracking system to log computer serial numbers, record check-in/check-out events, and generate gate passes. Used by gate security personnel to verify equipment movement.",
+    fullDescription: "An IT asset tracking system developed during university studies to record computer serial numbers, check-in/out events, and generate gate passes.",
     image: "/images/gate_management.svg",
+    techStack: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
     features: [
       "Computer serial number check-in & check-out",
-      "Visitor gate pass recording",
-      "Asset access audit trail"
+      "Visitor gate pass logging",
+      "Asset entry audit trail"
     ],
-    techStack: ["React.js", "Node.js", "Microsoft SQL Server", "Tailwind CSS"],
-    githubUrl: "https://github.com/shlelisa",
+    phases: [
+      {
+        phase: "01 — Requirements",
+        description: "Identified equipment identification fields and entry pass security rules."
+      },
+      {
+        phase: "02 — Analysis & Design",
+        description: "Designed database schema for hardware assets, security personnel logs, and timestamp tracking."
+      },
+      {
+        phase: "03 — Development",
+        description: "Implemented backend log handlers using PHP and MySQL, and designed frontend pass forms with HTML, CSS, and JavaScript."
+      },
+      {
+        phase: "04 — Testing",
+        description: "Tested serial number search retrieval, timestamp generation, and log record accuracy."
+      },
+      {
+        phase: "05 — Final Result",
+        description: "Delivered a working gate security asset tracking academic web system."
+      }
+    ],
+    contribution: [
+      "Created MySQL database structure for equipment serial numbers and gate passes",
+      "Implemented PHP script handlers for recording check-in and check-out logs",
+      "Designed quick-entry web forms using HTML, CSS, and JavaScript"
+    ],
+    outcome: "Applied database logging and input validation principles to physical IT asset entry control.",
     featured: true
   }
 ];
