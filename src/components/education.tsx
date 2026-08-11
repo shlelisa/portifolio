@@ -9,9 +9,11 @@ import {
   BookOpen,
   CheckCircle2
 } from "lucide-react";
-import { educationsData } from "@/data/portfolio-data";
+import { useEducationsQuery } from "@/hooks/use-portfolio-queries";
 
 export function Education() {
+  const { data: educationsData = [] } = useEducationsQuery();
+
   return (
     <section id="education" className="py-20 lg:py-28 relative bg-[#f8fafc] dark:bg-[#0b1120]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -35,15 +37,12 @@ export function Education() {
           {educationsData.map((edu) => (
             <motion.div
               key={edu.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.4 }}
               className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-[#111827] border border-slate-200 dark:border-[#1e293b] shadow-xl space-y-8 relative overflow-hidden"
             >
-              {/* Soft Blue Ambient Glow */}
-              <div className="absolute top-0 right-0 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-
               {/* Header Info */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100 dark:border-[#1e293b]">
                 <div className="flex items-start gap-4">

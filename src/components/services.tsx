@@ -12,7 +12,7 @@ import {
   ArrowRight,
   CheckCircle2
 } from "lucide-react";
-import { servicesData } from "@/data/portfolio-data";
+import { useServicesQuery } from "@/hooks/use-portfolio-queries";
 
 interface ServicesProps {
   onSelectServiceSubject: (subjectTag: string) => void;
@@ -28,6 +28,8 @@ const serviceIconMap: Record<string, React.ReactNode> = {
 };
 
 export function Services({ onSelectServiceSubject }: ServicesProps) {
+  const { data: servicesData = [] } = useServicesQuery();
+
   const handleEnquire = (subjectTag: string) => {
     onSelectServiceSubject(subjectTag);
     const contactElem = document.getElementById("contact");

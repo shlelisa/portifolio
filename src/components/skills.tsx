@@ -11,9 +11,10 @@ import {
   Terminal,
   CheckCircle2
 } from "lucide-react";
-import { skillCategories } from "@/data/portfolio-data";
+import { useSkillCategoriesQuery } from "@/hooks/use-portfolio-queries";
 
 export function Skills() {
+  const { data: skillCategories = [] } = useSkillCategoriesQuery();
   const [activeTab, setActiveTab] = useState<string>("all");
 
   const categoriesToDisplay = activeTab === "all"

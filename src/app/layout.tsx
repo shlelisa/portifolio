@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { QueryProvider } from "@/components/providers/query-provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -51,10 +52,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} ${outfit.variable}`}>
-      <body className="font-sans antialiased selection:bg-indigo-500 selection:text-white">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          {children}
-        </ThemeProvider>
+      <body className="font-sans antialiased selection:bg-blue-600 selection:text-white">
+        <QueryProvider>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+            {children}
+          </ThemeProvider>
+        </QueryProvider>
       </body>
     </html>
   );

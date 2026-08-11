@@ -1,9 +1,16 @@
 "use client";
 
 import { Code2, ArrowUp, Github, Linkedin, Mail } from "lucide-react";
-import { profileData } from "@/data/portfolio-data";
+import { useProfileQuery } from "@/hooks/use-portfolio-queries";
 
 export function Footer() {
+  const { data: profile } = useProfileQuery();
+  const name = profile?.name || "Lelisa Shashura";
+  const title = profile?.title || "Software Engineer | IT Professional";
+  const email = profile?.email || "lelisashashura@gmail.com";
+  const github = profile?.github || "https://github.com/shlelisa";
+  const linkedin = profile?.linkedin || "https://www.linkedin.com/in/lelisa-shashura-4935a2259/";
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -25,7 +32,7 @@ export function Footer() {
               </span>
             </div>
             <p className="text-xs sm:text-sm text-slate-400 max-w-sm leading-relaxed">
-              Software Engineer | IT Professional advancing from IT operations toward full-stack enterprise software application development.
+              {title} advancing from IT operations toward full-stack enterprise software application development.
             </p>
           </div>
 
@@ -53,7 +60,7 @@ export function Footer() {
             </h4>
             <div className="flex items-center gap-3">
               <a
-                href={profileData.github}
+                href={github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 rounded-xl bg-[#111827] border border-[#1e293b] text-slate-300 hover:text-blue-400 transition-colors"
@@ -62,7 +69,7 @@ export function Footer() {
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href={profileData.linkedin}
+                href={linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 rounded-xl bg-[#111827] border border-[#1e293b] text-slate-300 hover:text-blue-400 transition-colors"
@@ -71,7 +78,7 @@ export function Footer() {
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href={`mailto:${profileData.email}`}
+                href={`mailto:${email}`}
                 className="p-2.5 rounded-xl bg-[#111827] border border-[#1e293b] text-slate-300 hover:text-blue-400 transition-colors"
                 aria-label="Send Email"
               >
@@ -92,8 +99,8 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-          <p>© {new Date().getFullYear()} Lelisa Shashura. All rights reserved.</p>
-          <p>Designed with Next.js, TypeScript &amp; Tailwind CSS</p>
+          <p>© {new Date().getFullYear()} {name}. All rights reserved.</p>
+          <p>Designed with Next.js, TypeScript, Tailwind CSS &amp; TanStack Query</p>
         </div>
 
       </div>

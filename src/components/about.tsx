@@ -8,9 +8,12 @@ import {
   BookOpen,
   Code
 } from "lucide-react";
-import { profileData } from "@/data/portfolio-data";
+import { useProfileQuery } from "@/hooks/use-portfolio-queries";
 
 export function About() {
+  const { data: profile } = useProfileQuery();
+  const paragraphs = profile?.aboutParagraphs || [];
+
   return (
     <section id="about" className="py-20 lg:py-28 relative bg-[#f8fafc] dark:bg-[#0b1120]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,7 +25,7 @@ export function About() {
             <span>About Me</span>
           </div>
           <h2 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-slate-900 dark:text-slate-50">
-            About <span className="text-blue-600 dark:text-blue-400">Lelisa Shashura</span>
+            About <span className="text-blue-600 dark:text-blue-400">{profile?.name || "Lelisa Shashura"}</span>
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg max-w-2xl">
             Software Engineering graduate from Bule Hora University (CGPA: 3.88) working as an IT Trainee under the Development Team at Amhara Bank.
@@ -56,7 +59,7 @@ export function About() {
                 </div>
               </div>
 
-              {profileData.aboutParagraphs.map((paragraph, idx) => (
+              {paragraphs.map((paragraph, idx) => (
                 <p
                   key={idx}
                   className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed"

@@ -2,7 +2,12 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Download, FileText, Printer } from "lucide-react";
-import { profileData, skillCategories, experiences, educationsData } from "@/data/portfolio-data";
+import {
+  useProfileQuery,
+  useSkillCategoriesQuery,
+  useExperiencesQuery,
+  useEducationsQuery
+} from "@/hooks/use-portfolio-queries";
 
 interface CVModalProps {
   isOpen: boolean;
@@ -10,7 +15,21 @@ interface CVModalProps {
 }
 
 export function CVModal({ isOpen, onClose }: CVModalProps) {
+  const { data: profile } = useProfileQuery();
+  const { data: skillCategories = [] } = useSkillCategoriesQuery();
+  const { data: experiences = [] } = useExperiencesQuery();
+  const { data: educationsData = [] } = useEducationsQuery();
+
   if (!isOpen) return null;
+
+  const name = profile?.name || "Lelisa Shashura";
+  const title = profile?.title || "Software Engineer | IT Professional";
+  const email = profile?.email || "lelisashashura@gmail.com";
+  const phone = profile?.phone || "+251969642103";
+  const location = profile?.location || "Ethiopia";
+  const github = profile?.github || "https://github.com/shlelisa";
+  const linkedin = profile?.linkedin || "https://www.linkedin.com/in/lelisa-shashura-4935a2259/";
+  const bio = profile?.bio || "";
 
   const handlePrintPDF = () => {
     const printWindow = window.open("", "_blank");
@@ -20,7 +39,7 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
       <!DOCTYPE html>
       <html>
         <head>
-          <title>${profileData.name} - Curriculum Vitae</title>
+          <title>${name} - Curriculum Vitae</title>
           <style>
             body { font-family: 'Helvetica Neue', Arial, sans-serif; padding: 40px; color: #0f172a; line-height: 1.6; max-width: 800px; margin: 0 auto; }
             h1 { font-size: 26px; margin-bottom: 2px; color: #0f172a; }
@@ -39,13 +58,13 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
           </style>
         </head>
         <body>
-          <h1>${profileData.name}</h1>
-          <h2>${profileData.title}</h2>
-          <div class="meta">${profileData.email} | ${profileData.phone} | ${profileData.location}</div>
-          <div class="meta">GitHub: ${profileData.github} | LinkedIn: ${profileData.linkedin}</div>
+          <h1>${name}</h1>
+          <h2>${title}</h2>
+          <div class="meta">${email} | ${phone} | ${location}</div>
+          <div class="meta">GitHub: ${github} | LinkedIn: ${linkedin}</div>
 
           <h3>Professional Summary</h3>
-          <p style="font-size: 12px; color: #334155; margin: 0;">${profileData.bio}</p>
+          <p style="font-size: 12px; color: #334155; margin: 0;">${bio}</p>
 
           <h3>Technical Skills</h3>
           ${skillCategories.map(cat => `<div class="skill-item"><strong>${cat.title}:</strong> ${cat.skills.map(s => s.name).join(", ")}</div>`).join("")}
@@ -62,10 +81,12 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
           `).join("")}
 
           <h3>Education</h3>
-          <div class="section">
-            <div class="role-title"><span>${educationsData[0].degree} in ${educationsData[0].field}</span> <span style="font-weight: normal; color: #64748b;">${educationsData[0].graduationYear}</span></div>
-            <div class="company">${educationsData[0].institution} (${educationsData[0].gpaOrHonors})</div>
-          </div>
+          ${educationsData.map(edu => `
+            <div class="section">
+              <div class="role-title"><span>${edu.degree} in ${edu.field}</span> <span style="font-weight: normal; color: #64748b;">${edu.graduationYear}</span></div>
+              <div class="company">${edu.institution} (${edu.gpaOrHonors})</div>
+            </div>
+          `).join("")}
           <script>
             window.onload = function() {
               setTimeout(function() {
@@ -82,18 +103,18 @@ export function CVModal({ isOpen, onClose }: CVModalProps) {
   const handleDownloadTxt = () => {
     const cvText = `
 ==================================================
-LELISA SHASHURA - CURRICULUM VITAE
-Software Engineer | IT Professional
+${name.toUpperCase()} - CURRICULUM VITAE
+${title}
 ==================================================
-Email: ${profileData.email}
-Phone: ${profileData.phone}
-Location: ${profileData.location}
-GitHub: ${profileData.github}
-LinkedIn: ${profileData.linkedin}
+Email: ${email}
+Phone: ${phone}
+Location: ${location}
+GitHub: ${github}
+LinkedIn: ${linkedin}
 
 PROFESSIONAL SUMMARY
 --------------------------------------------------
-${profileData.bio}
+${bio}
 
 SKILLS & CORE COMPETENCIES
 --------------------------------------------------
@@ -111,10 +132,12 @@ ${exp.responsibilities.map(r => `  - ${r}`).join('\n')}
 
 EDUCATION
 --------------------------------------------------
-Degree: ${educationsData[0].degree} in ${educationsData[0].field}
-Institution: ${educationsData[0].institution} (${educationsData[0].graduationYear})
-Honors: ${educationsData[0].gpaOrHonors}
-Coursework: ${educationsData[0].relevantCoursework.join(', ')}
+${educationsData.map(edu => `
+Degree: ${edu.degree} in ${edu.field}
+Institution: ${edu.institution} (${edu.graduationYear})
+Honors: ${edu.gpaOrHonors}
+Coursework: ${edu.relevantCoursework.join(', ')}
+`).join('\n')}
 ==================================================
 `;
 
@@ -122,7 +145,7 @@ Coursework: ${educationsData[0].relevantCoursework.join(', ')}
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "Lelisa_Shashura_CV.txt";
+    link.download = `${name.replace(/\s+/g, '_')}_CV.txt`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -156,7 +179,7 @@ Coursework: ${educationsData[0].relevantCoursework.join(', ')}
                   Curriculum Vitae Preview
                 </h3>
                 <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Lelisa Shashura • Software Engineer | IT Professional
+                  {name} • {title}
                 </p>
               </div>
             </div>
@@ -195,13 +218,13 @@ Coursework: ${educationsData[0].relevantCoursework.join(', ')}
             {/* Resume Header */}
             <div className="text-center space-y-1 pb-4 border-b border-slate-200 dark:border-[#1e293b]">
               <h2 className="font-heading font-bold text-2xl text-slate-900 dark:text-slate-50">
-                {profileData.name}
+                {name}
               </h2>
               <p className="font-semibold text-blue-600 dark:text-blue-400 text-sm">
-                {profileData.title}
+                {title}
               </p>
               <p className="text-xs text-slate-500 dark:text-slate-400">
-                {profileData.email} • {profileData.phone} • {profileData.location}
+                {email} • {phone} • {location}
               </p>
             </div>
 
@@ -211,7 +234,7 @@ Coursework: ${educationsData[0].relevantCoursework.join(', ')}
                 Professional Summary
               </h4>
               <p className="leading-relaxed text-slate-600 dark:text-slate-300">
-                {profileData.bio}
+                {bio}
               </p>
             </div>
 
@@ -258,12 +281,14 @@ Coursework: ${educationsData[0].relevantCoursework.join(', ')}
               <h4 className="font-heading font-bold text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 border-b border-slate-200 dark:border-[#1e293b] pb-1">
                 Education
               </h4>
-              <div>
-                <strong className="text-slate-900 dark:text-slate-100">{educationsData[0].degree} in {educationsData[0].field}</strong>
-                <p className="text-slate-600 dark:text-slate-300 text-xs">
-                  {educationsData[0].institution} • {educationsData[0].graduationYear} ({educationsData[0].gpaOrHonors})
-                </p>
-              </div>
+              {educationsData.map(edu => (
+                <div key={edu.id}>
+                  <strong className="text-slate-900 dark:text-slate-100">{edu.degree} in {edu.field}</strong>
+                  <p className="text-slate-600 dark:text-slate-300 text-xs">
+                    {edu.institution} • {edu.graduationYear} ({edu.gpaOrHonors})
+                  </p>
+                </div>
+              ))}
             </div>
 
           </div>

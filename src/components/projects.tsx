@@ -16,10 +16,11 @@ import {
   UserCheck,
   FileCode2
 } from "lucide-react";
-import { projectsData } from "@/data/portfolio-data";
+import { useProjectsQuery } from "@/hooks/use-portfolio-queries";
 import { Project } from "@/types/portfolio";
 
 export function Projects() {
+  const { data: projectsData = [] } = useProjectsQuery();
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [activeProjectModal, setActiveProjectModal] = useState<Project | null>(null);

@@ -16,13 +16,16 @@ import {
   Check,
   Loader2
 } from "lucide-react";
-import { profileData } from "@/data/portfolio-data";
+import { useProfileQuery, useSendContactMutation } from "@/hooks/use-portfolio-queries";
 
 interface ContactProps {
   prefilledSubject?: string;
 }
 
 export function Contact({ prefilledSubject }: ContactProps) {
+  const { data: profile } = useProfileQuery();
+  const contactMutation = useSendContactMutation();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -31,8 +34,6 @@ export function Contact({ prefilledSubject }: ContactProps) {
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
   const [copiedEmail, setCopiedEmail] = useState(false);
 
   useEffect(() => {
@@ -79,14 +80,18 @@ export function Contact({ prefilledSubject }: ContactProps) {
 
     if (!validateForm()) return;
 
-    setIsSubmitting(true);
-
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 1500);
+    contactMutation.mutate(formData, {
+      onSuccess: () => {
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      }
+    });
   };
+
+  const currentEmail = profile?.email || "lelisashashura@gmail.com";
+  const currentPhone = profile?.phone || "+251969642103";
+  const currentLocation = profile?.location || "Ethiopia";
+  const currentGithub = profile?.github || "https://github.com/shlelisa";
+  const currentLinkedin = profile?.linkedin || "https://www.linkedin.com/in/lelisa-shashura-4935a2259/";
 
   return (
     <section id="contact" className="py-20 lg:py-28 relative bg-[#f8fafc] dark:bg-[#0b1120]">
@@ -140,16 +145,16 @@ export function Contact({ prefilledSubject }: ContactProps) {
                         Email Address
                       </span>
                       <a
-                        href={`mailto:${profileData.email}`}
+                        href={`mailto:${currentEmail}`}
                         className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                       >
-                        {profileData.email}
+                        {currentEmail}
                       </a>
                     </div>
                   </div>
 
                   <button
-                    onClick={() => copyToClipboard(profileData.email)}
+                    onClick={() => copyToClipboard(currentEmail)}
                     className="p-2 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-[#1e293b] transition-colors"
                     title="Copy Email"
                   >
@@ -167,10 +172,10 @@ export function Contact({ prefilledSubject }: ContactProps) {
                       Phone Number
                     </span>
                     <a
-                      href={`tel:${profileData.phone.replace(/\s+/g, '')}`}
+                      href={`tel:${currentPhone.replace(/\s+/g, '')}`}
                       className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                     >
-                      {profileData.phone}
+                      {currentPhone}
                     </a>
                   </div>
                 </div>
@@ -185,7 +190,7 @@ export function Contact({ prefilledSubject }: ContactProps) {
                       Location
                     </span>
                     <span className="text-xs sm:text-sm font-semibold text-slate-800 dark:text-slate-200">
-                      {profileData.location}
+                      {currentLocation}
                     </span>
                   </div>
                 </div>
@@ -198,7 +203,7 @@ export function Contact({ prefilledSubject }: ContactProps) {
                 </span>
                 <div className="flex items-center gap-3">
                   <a
-                    href={profileData.github}
+                    href={currentGithub}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-slate-100 dark:bg-[#0b1120] border border-slate-200 dark:border-[#1e293b] text-xs font-semibold text-slate-800 dark:text-slate-200 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition-colors"
@@ -207,7 +212,7 @@ export function Contact({ prefilledSubject }: ContactProps) {
                     <span>GitHub</span>
                   </a>
                   <a
-                    href={profileData.linkedin}
+                    href={currentLinkedin}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex-1 flex items-center justify-center gap-2 p-3 rounded-xl bg-slate-100 dark:bg-[#0b1120] border border-slate-200 dark:border-[#1e293b] text-xs font-semibold text-slate-800 dark:text-slate-200 hover:bg-blue-600 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white transition-colors"
@@ -221,7 +226,7 @@ export function Contact({ prefilledSubject }: ContactProps) {
             </div>
           </motion.div>
 
-          {/* Interactive Contact Form Column */}
+          {/* TanStack Query Mutation Contact Form Column */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -239,7 +244,7 @@ export function Contact({ prefilledSubject }: ContactProps) {
                 </p>
               </div>
 
-              {submitSuccess ? (
+              {contactMutation.isSuccess ? (
                 <div className="p-8 rounded-2xl bg-blue-500/10 border border-blue-500/30 text-center space-y-4">
                   <div className="w-12 h-12 rounded-full bg-blue-600 text-white mx-auto flex items-center justify-center">
                     <CheckCircle2 className="w-6 h-6" />
@@ -248,10 +253,10 @@ export function Contact({ prefilledSubject }: ContactProps) {
                     Message Sent Successfully!
                   </h4>
                   <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300">
-                    Thank you for reaching out, {formData.name || "friend"}. I have received your message and will get back to you shortly.
+                    Thank you for reaching out. I have received your message in my inbox and will get back to you shortly.
                   </p>
                   <button
-                    onClick={() => setSubmitSuccess(false)}
+                    onClick={() => contactMutation.reset()}
                     className="px-6 py-2.5 rounded-xl font-semibold text-xs text-white bg-blue-600 hover:bg-blue-700 transition-colors"
                   >
                     Send Another Message
@@ -259,6 +264,12 @@ export function Contact({ prefilledSubject }: ContactProps) {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+                  {contactMutation.isError && (
+                    <div className="p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-xs text-red-600 dark:text-red-400 flex items-center gap-2">
+                      <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                      <span>{(contactMutation.error as Error)?.message || "Failed to send message. Please try again."}</span>
+                    </div>
+                  )}
                   
                   {/* Name Input */}
                   <div className="space-y-1.5">
@@ -347,10 +358,10 @@ export function Contact({ prefilledSubject }: ContactProps) {
                   {/* Submit Button */}
                   <button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={contactMutation.isPending}
                     className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl font-semibold text-sm bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-600/20 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-70 disabled:pointer-events-none"
                   >
-                    {isSubmitting ? (
+                    {contactMutation.isPending ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin" />
                         <span>Sending Message...</span>

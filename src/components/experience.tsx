@@ -5,14 +5,13 @@ import {
   Briefcase,
   Calendar,
   Sparkles,
-  ChevronRight,
-  GraduationCap,
-  Building2,
-  ArrowRight
+  ChevronRight
 } from "lucide-react";
-import { experiences } from "@/data/portfolio-data";
+import { useExperiencesQuery } from "@/hooks/use-portfolio-queries";
 
 export function Experience() {
+  const { data: experiences = [] } = useExperiencesQuery();
+
   return (
     <section id="experience" className="py-20 lg:py-28 relative bg-[#f8fafc] dark:bg-[#0b1120]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -13,14 +13,22 @@ import {
   Code,
   ArrowRight
 } from "lucide-react";
-import { profileData } from "@/data/portfolio-data";
+import { useProfileQuery } from "@/hooks/use-portfolio-queries";
 
 interface HeroProps {
   onOpenCVModal: () => void;
 }
 
 export function Hero({ onOpenCVModal }: HeroProps) {
+  const { data: profile } = useProfileQuery();
   const [imgError, setImgError] = useState(false);
+
+  const name = profile?.name || "Lelisa Shashura";
+  const title = profile?.title || "Software Engineer | IT Professional";
+  const github = profile?.github || "https://github.com/shlelisa";
+  const linkedin = profile?.linkedin || "https://www.linkedin.com/in/lelisa-shashura-4935a2259/";
+  const phone = profile?.phone || "+251969642103";
+  const avatarUrl = profile?.avatarUrl || "/images/avatar.svg";
 
   const scrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -54,10 +62,10 @@ export function Hero({ onOpenCVModal }: HeroProps) {
             {/* Main Headline */}
             <div className="space-y-2">
               <h1 className="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-slate-900 dark:text-slate-50 leading-[1.1]">
-                {profileData.name}
+                {name}
               </h1>
               <h2 className="font-heading font-semibold text-xl sm:text-2xl lg:text-3xl text-blue-600 dark:text-blue-400">
-                {profileData.title}
+                {title}
               </h2>
             </div>
 
@@ -110,7 +118,7 @@ export function Hero({ onOpenCVModal }: HeroProps) {
             <div className="flex items-center gap-4 pt-3 border-t border-slate-200 dark:border-[#1e293b] w-full">
               <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">Connect:</span>
               <a
-                href={profileData.github}
+                href={github}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 rounded-xl bg-slate-100 dark:bg-[#111827] text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 border border-slate-200 dark:border-[#1e293b] transition-colors"
@@ -119,7 +127,7 @@ export function Hero({ onOpenCVModal }: HeroProps) {
                 <Github className="w-4 h-4" />
               </a>
               <a
-                href={profileData.linkedin}
+                href={linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2.5 rounded-xl bg-slate-100 dark:bg-[#111827] text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 border border-slate-200 dark:border-[#1e293b] transition-colors"
@@ -128,11 +136,11 @@ export function Hero({ onOpenCVModal }: HeroProps) {
                 <Linkedin className="w-4 h-4" />
               </a>
               <a
-                href={`tel:${profileData.phone}`}
+                href={`tel:${phone.replace(/\s+/g, '')}`}
                 className="p-2.5 rounded-xl bg-slate-100 dark:bg-[#111827] text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 border border-slate-200 dark:border-[#1e293b] transition-colors text-xs font-semibold"
                 aria-label="Call Phone"
               >
-                {profileData.phone}
+                {phone}
               </a>
             </div>
 
@@ -150,8 +158,8 @@ export function Hero({ onOpenCVModal }: HeroProps) {
                 <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-slate-950 flex items-center justify-center">
                   {!imgError ? (
                     <Image
-                      src={profileData.avatarUrl}
-                      alt={profileData.name}
+                      src={avatarUrl}
+                      alt={name}
                       width={400}
                       height={400}
                       className="w-full h-full object-cover object-center"
@@ -165,7 +173,7 @@ export function Hero({ onOpenCVModal }: HeroProps) {
                       </div>
                       <div>
                         <h3 className="font-heading font-bold text-lg text-slate-900 dark:text-slate-50">
-                          Lelisa Shashura
+                          {name}
                         </h3>
                         <p className="text-xs text-blue-600 dark:text-blue-400 font-semibold">
                           Software Engineer
