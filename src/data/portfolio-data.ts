@@ -114,6 +114,59 @@ export const experiences: Experience[] = [
 
 export const projectsData: Project[] = [
   {
+    id: "cv-builder",
+    title: "LcV Builder — AI-Powered Multilingual CV & Career Suite",
+    category: "Web Apps",
+    projectType: "Professional Project",
+    period: "Production · 2026",
+    problem: "Job seekers often struggle with complex formatting rules, strict 1-page A4 constraints, ATS keyword filtering, and crafting tailored cover letters across multiple languages (English, Afaan Oromoo, and Amharic).",
+    solution: "A modern, full-stack AI career platform featuring a real-time single-page A4 CV builder with customizable typography and color palettes, an automated AI ATS & keyword gap diagnostic scanner, and trilingual cover letter generation.",
+    shortDescription: "A modern Next.js AI career assistant supporting Afaan Oromoo, English, and Amharic with 1-page A4 CV design, real-time ATS matcher, and AI cover letters.",
+    fullDescription: "LcV Builder is an AI-powered career assistant designed to streamline resume creation and application workflows. It features an interactive single-page A4 CV builder with 8+ modern templates and custom typography controls, a real-time AI job analyzer that scores ATS compatibility and highlights keyword gaps, and an AI letter generator supporting Afaan Oromoo, English, and Amharic.",
+    image: "/images/cv_builder.svg",
+    liveUrl: "https://lelisacv-builder.vercel.app",
+    githubUrl: "https://github.com/shlelisa/cv-builder",
+    techStack: ["Next.js", "React.js", "TypeScript", "Tailwind CSS", "Google Gemini AI", "jsPDF", "Framer Motion"],
+    features: [
+      "Trilingual Support (Afaan Oromoo, English, and Amharic)",
+      "Strict 1-Page A4 Precision Layouts & 8+ Curated Templates",
+      "Live Typography & Custom Styling Controls (Fonts, Spacing, Sizing)",
+      "AI Job Match & Real-Time ATS Diagnostic Scanner",
+      "AI Multilingual Cover Letter & Application Generator",
+      "Instant High-Quality PDF & Text Download"
+    ],
+    phases: [
+      {
+        phase: "01 — Requirements & Localization",
+        description: "Defined core features for ATS compliance, strict 1-page A4 layout rules, and multi-language support across English, Afaan Oromoo, and Amharic."
+      },
+      {
+        phase: "02 — Architecture & Component Design",
+        description: "Built modular split-pane editor architecture, responsive A4 live preview canvas, and dynamic theme and typography switching engine."
+      },
+      {
+        phase: "03 — AI Integration & ATS Diagnostics",
+        description: "Integrated Google Gemini AI for real-time ATS scoring, keyword gap diagnostics against job descriptions, and multilingual letter generation."
+      },
+      {
+        phase: "04 — Typography & Export Engine",
+        description: "Engineered fine-grained typography controls (Word-style sizing and spacing) and accurate client-side PDF document generation."
+      },
+      {
+        phase: "05 — Production Deployment",
+        description: "Deployed to Vercel with optimized Next.js App Router performance, instant responsiveness, and dark/light mode support."
+      }
+    ],
+    contribution: [
+      "Architected and developed full-stack Next.js web application with TypeScript and Tailwind CSS",
+      "Built trilingual localization support for English, Afaan Oromoo, and Amharic",
+      "Integrated Google Gemini AI for automated job description analysis and ATS diagnostics",
+      "Implemented client-side PDF export and real-time customizable CV layout engine"
+    ],
+    outcome: "Deployed a production-grade, fast, and accessible AI career platform at lelisacv-builder.vercel.app helping users build professional, ATS-ready CVs.",
+    featured: true
+  },
+  {
     id: "house-rental",
     title: "House Rental Management System",
     category: "Academic Projects",
